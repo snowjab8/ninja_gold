@@ -1,0 +1,25 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Total gold: {{ golds }}!
+  </h1>
+  <div>
+    <p> Farm </p>
+    <p> Earns 2-5 gold </p>
+    <button (click)='getFarmFromService()'>Farm! </button> 
+  </div>
+  <div>
+    <p> Cave </p>
+    <p>Earsn 5-10 gold </p> 
+    <button (click)= 'getCaveFromService()'>Cave! </button> 
+  </div>
+  <div>
+    <p> House </p>
+    <p> Earsn 7-16 gold </p>
+    <button (click)= 'getHouseFromService()'>House! </button> 
+  </div><div>
+    <p> Casino </p>
+    <p> Earn or lose up to 100 gold</p>
+    <button (click) = 'getCasinoFromService()'>Casino! </button> 
+    <button (click) = 'getRestart()'> Restart </button>
+  </div>
