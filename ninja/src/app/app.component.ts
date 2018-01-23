@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class AppComponent implements OnInit {
   golds: number;
+  activity_log: Array<string> = [];
   constructor (private _httpService: HttpService) { }
 
 
@@ -18,12 +19,12 @@ export class AppComponent implements OnInit {
   }
  
   getFarmFromService() {
-   
-    // getextrafunction();
-    let observable = this._httpService.getFarm();
+    const random_number = Math.floor(Math.random() * 4) + 2
+    this.activity_log.push( `You won ${random_number} gold from Farming`); 
+    let observable = this._httpService.getFarm({num: random_number});
     observable.subscribe(data => {
       console.log('farm gold!', data);
-      this.golds = data.gold;
+      this.golds = data['gold'];
       console.log(data);
 
     });
@@ -32,16 +33,16 @@ export class AppComponent implements OnInit {
     let observable = this._httpService.getGold();
     observable.subscribe(data => {
       console.log('Got our gold!', data);
-      this.golds = data.gold;
-      console.log('my bad', data);
+      this.golds = data['gold'];
     });
   }
     getCaveFromService(){
-     
-      let observable = this._httpService.getCave();
+      const random_number = Math.floor(Math.random() * 6) + 5
+      this.activity_log.push( `You won ${random_number} gold from spelunking`) 
+      let observable = this._httpService.getCave({num: random_number});
       observable.subscribe(data => {
         console.log('cave gold', data);
-        this.golds = data.gold;
+        this.golds = data['gold'];
         console.log('got it', data)
       })
     
@@ -49,11 +50,12 @@ export class AppComponent implements OnInit {
     // fromFarm.subscribe(data =>)
   }
   getHouseFromService(){
-     
-    let observable = this._httpService.getHouse();
+    const random_number = Math.floor(Math.random() * 10) + 7
+    this.activity_log.push( `You won ${random_number} gold from flipping houses`);
+    let observable = this._httpService.getHouse({num: random_number});
     observable.subscribe(data => {
       console.log('house gold', data);
-      this.golds = data.gold;
+      this.golds = data['gold'];
       console.log('got it', data)
     })
   
@@ -62,11 +64,16 @@ export class AppComponent implements OnInit {
   }
   
   getCasinoFromService(){
-     
-    let observable = this._httpService.getCasino();
+    const random_number = Math.floor(Math.random() * 201) - 100
+    if( random_number > 0){
+      this.activity_log.push( `You won ${random_number} gold from casion`);
+    } else {
+      this.activity_log.push( `house always wins, you lost  ${random_number} `);
+    }
+    let observable = this._httpService.getCasino({num: random_number});
     observable.subscribe(data => {
       console.log('casino gold', data);
-      this.golds = data.gold;
+      this.golds = data['gold'];
       console.log('got it', data);
     })
   }
@@ -75,9 +82,11 @@ export class AppComponent implements OnInit {
     let observable = this._httpService.getRestart();
     observable.subscribe(data => {
       console.log('RESTART GOLD IS' , data);
-      this.golds = data.gold;
+      this.golds = data['gold'];
+    
       
     })
+    this.activity_log = []
   }
 
 // let fromFarm = this._httpService.getFarm();

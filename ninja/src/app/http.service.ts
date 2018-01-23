@@ -6,7 +6,6 @@ export class HttpService {
 
   constructor(private _http: HttpClient) {
     this.getGold();
-    this.getFarm();
    }
 
    getGold() {
@@ -14,23 +13,24 @@ export class HttpService {
     //  let tempObservable = this._http.get('/gold');
     //  tempObservable.subscribe(data => console.log('Got oour gold', data));
    }
-   getFarm() {
+   getFarm(num) {
      console.log('getFarm is hit');
-     return this._http.get('/gold/farm');
+     console.log('Hello from service', num.num);
+     return this._http.put('/gold/farm', num);
    }
 
-   getCave(){
+   getCave(num){
      console.log('cave is hit');
-     return this._http.get('/gold/cave')
+     return this._http.put('/gold/cave', num)
    }
 
-   getHouse(){
+   getHouse(num){
      console.log('house is hit');
-     return this._http.get('/gold/house')
+     return this._http.put('/gold/house', num)
    }
-   getCasino(){
+   getCasino(num){
      console.log('casino is hit');
-     return this._http.get('/gold/casino')
+     return this._http.put('/gold/casino', num)
    }
    getRestart() {
      console.log('Restart button is hit');
