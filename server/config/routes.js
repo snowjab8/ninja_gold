@@ -5,19 +5,19 @@ module.exports = function(app) {
         golds.getGold(request, response);
     })
 
-    app.get('/gold/farm', function(request, response) {
+    app.put('/gold/farm', function(request, response) {
         golds.getFarm(request, response);
     })
 
-    app.get('/gold/cave', function(request, response) {
+    app.put('/gold/cave', function(request, response) {
         golds.getCave(request, response);
     })
 
-    app.get('/gold/house', function(request, response) {
+    app.put('/gold/house', function(request, response) {
         golds.getHouse(request,response);
     })
 
-    app.get('/gold/casino', function(request, response) {
+    app.put('/gold/casino', function(request, response) {
         golds.getCasino(request, response);
     })
 
